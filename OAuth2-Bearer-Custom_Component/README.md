@@ -30,3 +30,16 @@ sudo dapr run --app-id serviceA --app-port 5000 --port 3504 --components-path ./
 3. Follow the steps as mentioned in https://github.com/dapr/components-contrib/blob/master/docs/developing-component.md
 4. Create a validation folder under go/src/github.com/dapr/components-contrib/meiddleware/http
 5. Download the validation_middleware.go file under the validation folder
+6. Go to  /home/ubuntu/go/src/github.com/dapr/dapr/cmd/daprd/main.go
+7. In the main.go file, import the following under middleware section
+```
+github.com/dapr/components-contrib/middleware/http/validation
+```
+8. Add this under runtime.WithHTTPMiddleware
+```
+http_middleware_loader.New("validation", func(metadata middleware.Metadata) http_middleware.Middleware {
+				handler, _ := validation.NewValidationMiddleware(log).GetHandler(metadata)
+				return handler
+			}),
+```
+9. Build the debuggable dapr
