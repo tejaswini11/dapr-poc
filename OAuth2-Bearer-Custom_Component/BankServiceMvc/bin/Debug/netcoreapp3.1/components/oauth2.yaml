@@ -1,0 +1,22 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: oauth2
+  namespace: default
+spec:
+  type: middleware.http.oauth2
+  metadata:
+  - name: clientId
+    value: "be8cf34e-4060-4bdc-bd30-6366f229d166"
+  - name: clientSecret
+    value: "5bPuQ6VKm0~Pa-CeLn-E~e07OizolsNi.a"
+  - name: scopes
+    value: "https://graph.microsoft.com/"
+  - name: authURL
+    value: "https://login.microsoftonline.com/6c761d04-2635-4a70-9a0f-2f1d6abf3545/oauth2/authorize"
+  - name: tokenURL
+    value: "https://login.microsoftonline.com/6c761d04-2635-4a70-9a0f-2f1d6abf3545/oauth2/token"
+  - name: redirectURL
+    value: "http://localhost:3504/v1.0/invoke/serviceA/method/display"
+  - name: authHeaderName
+    value: "Authorization"

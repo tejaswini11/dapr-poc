@@ -1,0 +1,12 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: bearer
+  namespace: default
+spec:
+  type: middleware.http.bearer
+  metadata:
+  - name: issuerURL
+    value: "https://sts.windows.net/6c761d04-2635-4a70-9a0f-2f1d6abf3545/"
+  - name: clientID
+    value: "00000002-0000-0000-c000-000000000000"
